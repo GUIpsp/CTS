@@ -1,0 +1,8 @@
+author: GUIpsp
+database: true
+description: Chests that suck!
+generator: http://dinnerbone.com/minecraft/tools/pluginator/
+main: net.guipsp.cts.CTS
+name: CTS
+startup: postworld
+version: '0.1'
