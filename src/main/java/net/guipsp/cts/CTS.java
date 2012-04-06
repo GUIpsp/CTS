@@ -1,22 +1,18 @@
 package net.guipsp.cts;
 
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class CTS extends JavaPlugin implements Listener {
-    public void onDisable() {
-        // TODO: Place any custom disable code here.
-    }
+public class CTS extends JavaPlugin {
+	@Override
+	public void onDisable() {
+		System.out.println("Disabling CTS");
+	}
 
-    public void onEnable() {
-        getServer().getPluginManager().registerEvents(this, this);
-    }
+	@Override
+	public void onEnable() {
+		getServer().getPluginManager()
+				.registerEvents(new Eventificator(), this);
+		System.out.println("Enabling CTS");
+	}
 
-    @EventHandler
-    public void onPlayerJoin(PlayerJoinEvent event) {
-        event.getPlayer().sendMessage("Welcome, " + event.getPlayer().getDisplayName() + "!");
-    }
 }
-
