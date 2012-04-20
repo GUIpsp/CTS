@@ -50,7 +50,8 @@ public class ItemFinder implements Runnable {
 				for (int z = entity.getLocation().getBlockZ() - range; z < entity
 						.getLocation().getBlockZ() + range; z++) {
 					Block block = world.getBlockAt(x, y, z);
-					if (block.getType() == Material.CHEST) {
+					if (block.getType() == Material.CHEST
+							&& block.isBlockPowered()) {
 						Inventory inv = ((Chest) block.getState())
 								.getInventory();
 						inv.addItem(((Item) entity).getItemStack());
@@ -69,7 +70,8 @@ public class ItemFinder implements Runnable {
 				for (int z = entity.getLocation().getBlockZ() - dragrange; z < entity
 						.getLocation().getBlockZ() + dragrange; z++) {
 					Block block = world.getBlockAt(x, y, z);
-					if (block.getType() == Material.CHEST) {
+					if (block.getType() == Material.CHEST
+							&& block.isBlockPowered()) {
 						Vector Vel = entity.getVelocity();
 						Vector Direction = entity.getLocation()
 								.subtract(block.getLocation().toVector())

@@ -3,8 +3,8 @@ package net.guipsp.cts;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class CTS extends JavaPlugin {
-	ItemFinder itemFinder = new ItemFinder(this, 2,10);
-	Thread itemFinderThread = new Thread(itemFinder,"ItemFinder");
+	ItemFinder itemFinder = new ItemFinder(this, 2, 5);
+	Thread itemFinderThread = new Thread(itemFinder, "ItemFinder");
 
 	@Override
 	public void onDisable() {
