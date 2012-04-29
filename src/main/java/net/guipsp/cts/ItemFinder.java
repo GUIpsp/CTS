@@ -3,7 +3,7 @@ package net.guipsp.cts;
 import org.bukkit.*;
 import org.bukkit.block.*;
 import org.bukkit.entity.*;
-import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.*;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.util.Vector;
 
@@ -54,9 +54,20 @@ public class ItemFinder implements Runnable {
 							&& block.isBlockPowered()) {
 						Inventory inv = ((Chest) block.getState())
 								.getInventory();
-						inv.addItem(((Item) entity).getItemStack());
+						ItemStack result = inv.addItem(
+								((Item) entity).getItemStack()).get(0);
+						if (result.getAmount() == (((Item) entity)
+								.getItemStack()).getAmount()
+								&& result.getType() == (((Item) entity)
+										.getItemStack()).getType()) {
+							return;
+						}
+						if (result != null) {
+							world.dropItem(entity.getLocation(), result);
+						}
 						entity.remove();
 						world.playEffect(block.getLocation(), Effect.CLICK1, 0);
+
 						return;
 					}
 
